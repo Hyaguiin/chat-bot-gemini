@@ -1,0 +1,4 @@
+# para o env
+.env
+#para os modulos e pacotes
+\node_modules
