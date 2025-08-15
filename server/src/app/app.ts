@@ -4,11 +4,23 @@ import env from '../utils/envalid';
 
 const app = express();
 app.use(express.json());
+const allDomains = env.ALLOWED_ORIGINS.split(",").map((d) => d.trim());
+
 const corsOptions = {
-    origin: env.ALLOWED_ORIGINS.split(','),
-    methods: ['GET', 'PUT', 'DELETE', 'POST', 'PATCH', 'OPTIONS'],
-    credentials: true,
-}
+  origin: function (origin: any, callback: any) {
+    if (!origin) return callback(null, true);
+    if (allDomains.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
 
 app.use(cors(corsOptions));
 

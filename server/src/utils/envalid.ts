@@ -8,7 +8,7 @@ const env = cleanEnv(process.env, {
     JWT_SECRET_KEY: str(),
     JWT_REFRESH: str(),
     JWT_EXPIRES: str(),
-    GEMINI_API_KEY: str(),
+    GEMINI_API_KEY: str({ default: 'your-fallback-api-key' }),
     DATABASE_URL: str(),
     GOOGLE_AVALIABLE_MODELS: str(),
 })

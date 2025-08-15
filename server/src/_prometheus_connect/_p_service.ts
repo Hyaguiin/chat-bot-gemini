@@ -1,10 +1,24 @@
 import WebSocket, { WebSocketServer } from "ws";
 import env from "../utils/envalid";
 import { model } from "./_p_connection";
+import { IncomingMessage } from "http";
 
 const WS_PORT = env.WS_PORT;
 
-export const wss = new WebSocketServer({ port: WS_PORT }, () => {
+export const wss = new WebSocketServer({
+  port: WS_PORT,
+  handleProtocols: (protocols: Set<string>, req: IncomingMessage): string | false => {
+    const origin = req.headers.origin as string;
+    const allowedOrigins = env.ALLOWED_ORIGINS.split(',');
+
+    if (allowedOrigins.includes(origin)) {
+      return "protocol";  // Retorna um protocolo válido
+    }
+
+    console.log(`Conexão rejeitada de origem não permitida: ${origin}`);
+    return false;  
+  }
+}, () => {
   console.log(`Servidor WebSocket ouvindo na porta ${WS_PORT}`);
 });
 
@@ -13,8 +27,6 @@ wss.on("connection", (ws: WebSocket) => {
 
   ws.on("message", async (message: string | Buffer | ArrayBuffer | Buffer[]) => {
     try {
-      console.log('Mensagem recebida:', message);
-
       let messageString: string;
       if (typeof message === 'string') {
         messageString = message;
@@ -28,35 +40,23 @@ wss.on("connection", (ws: WebSocket) => {
       }
 
       if (typeof messageString !== 'string' || messageString.trim().length === 0) {
-        console.error('Mensagem inválida:', messageString);
         throw new Error('Mensagem inválida');
       }
 
-      console.log('Mensagem válida:', messageString);
-
       const result = await model.generateContent(messageString);
 
-      console.log('Resultado da API:', result);
-
       if (!result || !result.response) {
-        console.error('Resposta da API vazia:', result);
         throw new Error('Resposta da API vazia');
       }
 
       const text = await result.response.text();
-      console.log('Resposta gerada:', text);
-
       ws.send(text);
 
     } catch (error) {
-      console.error('Erro detalhado:', error);
-
       let errorMessage = 'Desculpe, houve um erro ao processar sua solicitação.';
-
       if (error instanceof Error) {
         errorMessage += ` Detalhes: ${error.message}`;
       }
-
       ws.send(errorMessage);
     }
   });
