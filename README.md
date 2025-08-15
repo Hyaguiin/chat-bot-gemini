@@ -1,8 +1,8 @@
-# 💰 FinBot - Chatbot de Finanças com IA
+# 💰 _prometheus - Chatbot de Finanças com IA
 
-![FinBot Logo](assets/public/image/finaca.png)
+<img src="assets/public/image/financa.png" alt="FinBot Logo" width="300" />
 
-FinBot é um chatbot inteligente voltado para finanças pessoais, integrado com a IA do **Google Gemini**. Ele ajuda os usuários a tirar dúvidas sobre dinheiro, orçamentos, investimentos e hábitos financeiros, com suporte a:
+_prometheus é um chatbot inteligente voltado para finanças pessoais, integrado com a IA do **Google Gemini**. Ele ajuda os usuários a tirar dúvidas sobre dinheiro, orçamentos, investimentos e hábitos financeiros, com suporte a:
 
 - Autenticação de usuários com JWT
 - Integração com IA via API (Gemini)
@@ -37,3 +37,7 @@ FinBot é um chatbot inteligente voltado para finanças pessoais, integrado com 
 ```bash
 git clone https://github.com/seu-usuario/finbot.git
 cd finbot
+cd server
+npm install
+npx tsc
+npm run dev
