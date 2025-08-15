@@ -1,8 +1,6 @@
-import { Send } from './../../../node_modules/@types/express-serve-static-core/index.d';
 import express from 'express';
 import cors from 'cors';
 import env from '../utils/envalid';
-import { METHODS } from 'http';
 
 const app = express();
 app.use(express.json());
