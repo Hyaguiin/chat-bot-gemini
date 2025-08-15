@@ -1,6 +1,6 @@
 # 💰 FinBot - Chatbot de Finanças com IA
 
-![FinBot Logo](assets/public/image/finaca.png)
+<img src="assets/public/image/financa.png" alt="FinBot Logo" width="300" />
 
 FinBot é um chatbot inteligente voltado para finanças pessoais, integrado com a IA do **Google Gemini**. Ele ajuda os usuários a tirar dúvidas sobre dinheiro, orçamentos, investimentos e hábitos financeiros, com suporte a:
 
