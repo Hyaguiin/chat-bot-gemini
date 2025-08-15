@@ -1,4 +1,4 @@
-# 💰 FinBot - Chatbot de Finanças com IA
+# 💰 prometheus - Chatbot de Finanças com IA
 
 <img src="assets/public/image/financa.png" alt="FinBot Logo" width="300" />
 
