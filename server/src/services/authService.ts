@@ -9,7 +9,7 @@ export class AuthService {
 
     registerUser = async(body:UserCreationAtributesDTO )=>{
         try{
-            const token = await generateToken(body.email);
+            const token = await generateToken(body.email, body.id);
             const register = await this.userService.createUserService(body);
             return {register, token};
         }catch (err) {
@@ -23,10 +23,12 @@ export class AuthService {
   loginUser = async(email: string, password: string) => {
     try {
 
-        const token = await generateToken(email);
         const user = await this.userService.getUserByEmail(email);
+        if(!user){
+            throw new Error(`Usuário não cadastrado!`);
+        }
 
-
+        const token = await generateToken(user.id, user.email);
         if (!user) {
             throw new Error(`Usuário não encontrado!`);
         }

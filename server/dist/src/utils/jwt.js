@@ -8,10 +8,11 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const envalid_1 = __importDefault(require("./envalid"));
 const SECRET = envalid_1.default.JWT_SECRET_KEY;
 const EXPIRES = "1h";
-const generateToken = async (email) => {
+const generateToken = async (email, id) => {
     try {
         const payload = {
             userEmail: email,
+            userId: id
         };
         const token = await jsonwebtoken_1.default.sign(payload, SECRET, { expiresIn: EXPIRES });
         return token;

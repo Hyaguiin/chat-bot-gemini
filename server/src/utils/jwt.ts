@@ -6,12 +6,14 @@ const EXPIRES = "1h";
 
 export const generateToken = async (
 
-  email: string
+  email: string,
+  id: string
 ): Promise<string> => {
   try {
     const payload = {
       
       userEmail: email,
+      userId: id
     };
 
     const token = await jwt.sign(payload, SECRET, { expiresIn: EXPIRES });

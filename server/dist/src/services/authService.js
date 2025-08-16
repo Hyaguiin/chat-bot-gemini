@@ -7,7 +7,7 @@ class AuthService {
     constructor() {
         this.registerUser = async (body) => {
             try {
-                const token = await (0, jwt_1.generateToken)(body.email);
+                const token = await (0, jwt_1.generateToken)(body.email, body.id);
                 const register = await this.userService.createUserService(body);
                 return { register, token };
             }
@@ -20,8 +20,11 @@ class AuthService {
         };
         this.loginUser = async (email, password) => {
             try {
-                const token = await (0, jwt_1.generateToken)(email);
                 const user = await this.userService.getUserByEmail(email);
+                if (!user) {
+                    throw new Error(`Informe o usuário`);
+                }
+                const token = await (0, jwt_1.generateToken)(user.id, user.email);
                 if (!user) {
                     throw new Error(`Usuário não encontrado!`);
                 }
