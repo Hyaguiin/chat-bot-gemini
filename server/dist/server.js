@@ -6,8 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./src/app/app"));
 const envalid_1 = __importDefault(require("./src/utils/envalid"));
 const _p_service_1 = require("./src/_prometheus_connect/_p_service");
-const db_1 = require("./src/config/db");
-console.log(envalid_1.default);
+const db_1 = require("./src/config/database/db");
 const httpServer = app_1.default.listen(envalid_1.default.PORT, async () => {
     try {
         await (0, db_1.dbConnect)();

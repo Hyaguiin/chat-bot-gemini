@@ -9,7 +9,7 @@ const env = (0, envalid_1.cleanEnv)(process.env, {
     JWT_SECRET_KEY: (0, envalid_1.str)(),
     JWT_REFRESH: (0, envalid_1.str)(),
     JWT_EXPIRES: (0, envalid_1.str)(),
-    GEMINI_API_KEY: (0, envalid_1.str)(),
+    GEMINI_API_KEY: (0, envalid_1.str)({ default: 'your-fallback-api-key' }),
     DATABASE_URL: (0, envalid_1.str)(),
     GOOGLE_AVALIABLE_MODELS: (0, envalid_1.str)(),
 });

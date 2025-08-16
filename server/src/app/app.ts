@@ -5,7 +5,7 @@ import env from '../utils/envalid';
 const app = express();
 app.use(express.json());
 const allDomains = env.ALLOWED_ORIGINS.split(",").map((d) => d.trim());
-/*
+
 const corsOptions = {
   origin: function (origin: any, callback: any) {
     if (!origin) return callback(null, true);
@@ -23,7 +23,7 @@ const corsOptions = {
 
 
 app.use(cors(corsOptions));
-*/
+
 app.get('/', (req, res)=>{
     try{
         res.send({message: `Deu certo, servidor rodando!`});
