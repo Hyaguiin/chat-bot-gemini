@@ -35,9 +35,13 @@ _prometheus é um chatbot inteligente voltado para finanças pessoais, integrado
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/finbot.git
-cd finbot
-cd server
+git clone https://github.com/seu-usuario/finbot.git](https://github.com/Hyaguiin/prometheus-chat-server.git
+cd prometheus-chat-server/server
 npm install
 npx tsc
 npm run dev
+
+```
+### 2. Para rodar o webhook via terminal
+```bash
+wscat -c ws://localhost:3000
