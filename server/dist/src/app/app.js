@@ -28,8 +28,6 @@ const corsOptions = {
     optionsSuccessStatus: 204,
 };
 app.use((0, cors_1.default)(corsOptions));
-app.use('/api/auth', authRoutes_1.default);
-app.use('/api/user', userRoutes_1.default);
 app.get('/', (req, res) => {
     try {
         res.send({ message: `Deu certo, servidor rodando!` });
@@ -40,4 +38,6 @@ app.get('/', (req, res) => {
         }
     }
 });
+app.use('/api/auth', authRoutes_1.default);
+app.use('/api/user', userRoutes_1.default);
 exports.default = app;

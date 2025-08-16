@@ -27,8 +27,7 @@ const corsOptions = {
 
 
 app.use(cors(corsOptions));
-app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
+
 
 app.get('/', (req, res)=>{
     try{
@@ -39,5 +38,6 @@ app.get('/', (req, res)=>{
         }
     }
 })
-
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 export default app;
