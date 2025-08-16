@@ -16,6 +16,10 @@ class UserRepository {
             const user = await userModel_1.UserModel.findById(id);
             return user;
         };
+        this.getUserByEmail = async (email) => {
+            const user = await userModel_1.UserModel.findOne({ email });
+            return user;
+        };
         this.deleteUserById = async (id) => {
             const user = await userModel_1.UserModel.deleteOne({ _id: id });
             return user;

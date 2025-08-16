@@ -5,12 +5,12 @@ const SECRET = env.JWT_SECRET_KEY as string;
 const EXPIRES = "1h";
 
 export const generateToken = async (
-  id: string,
+
   email: string
 ): Promise<string> => {
   try {
     const payload = {
-      userId: id,
+      
       userEmail: email,
     };
 

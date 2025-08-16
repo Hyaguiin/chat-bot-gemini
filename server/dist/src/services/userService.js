@@ -81,6 +81,32 @@ class UserService {
                 throw new Error("Erro desconhecido!");
             }
         };
+        this.getUserById = async (id) => {
+            try {
+                const user = await this.repository.getUserById(id);
+                console.log(`Usuário: ${JSON.stringify(user)}`);
+                return user;
+            }
+            catch (err) {
+                if (err instanceof Error) {
+                    throw new Error(`Erro: ${err.message}`);
+                }
+                throw new Error("Erro desconhecido!");
+            }
+        };
+        this.getUserByEmail = async (email) => {
+            try {
+                const user = await this.repository.getUserByEmail(email);
+                console.log(`Usuário: ${JSON.stringify(user)}`);
+                return user;
+            }
+            catch (err) {
+                if (err instanceof Error) {
+                    throw new Error(`Erro: ${err.message}`);
+                }
+                throw new Error("Erro desconhecido!");
+            }
+        };
         this.deleteUserById = async (id) => {
             try {
                 if (!id) {

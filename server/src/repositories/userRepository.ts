@@ -25,6 +25,13 @@ export class UserRepository {
         return user;
      };
 
+
+      getUserByEmail = async(email: string)=>{
+       
+        const user = await UserModel.findOne({email});
+        return user;
+     };
+
       deleteUserById = async(id: string)=>{
     
         const user = await UserModel.deleteOne({_id: id});

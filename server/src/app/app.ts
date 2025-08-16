@@ -1,10 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import env from '../utils/envalid';
+import authRoutes from '../routes/authRoutes';
+import userRoutes from '../routes/userRoutes';
+
 
 const app = express();
 app.use(express.json());
 const allDomains = env.ALLOWED_ORIGINS.split(",").map((d) => d.trim());
+
 
 const corsOptions = {
   origin: function (origin: any, callback: any) {
@@ -23,6 +27,8 @@ const corsOptions = {
 
 
 app.use(cors(corsOptions));
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 
 app.get('/', (req, res)=>{
     try{

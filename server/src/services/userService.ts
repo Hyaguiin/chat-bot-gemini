@@ -106,6 +106,34 @@ export class UserService {
     }
   };
 
+getUserById = async (id: string) => {
+    try {
+      const user = await this.repository.getUserById(id);
+      console.log(`Usuário: ${JSON.stringify(user)}`);
+      return user;
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(`Erro: ${err.message}`);
+      }
+      throw new Error("Erro desconhecido!");
+    }
+  };
+
+  getUserByEmail = async (email: string) => {
+    try {
+      const user = await this.repository.getUserByEmail(email);
+      console.log(`Usuário: ${JSON.stringify(user)}`);
+      return user;
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(`Erro: ${err.message}`);
+      }
+      throw new Error("Erro desconhecido!");
+    }
+  };
+
+
+
   deleteUserById = async (id: string) => {
     try {
       if (!id) {
