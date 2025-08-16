@@ -22,7 +22,7 @@ class AuthService {
             try {
                 const user = await this.userService.getUserByEmail(email);
                 if (!user) {
-                    throw new Error(`Informe o usuário`);
+                    throw new Error(`Usuário não cadastrado!`);
                 }
                 const token = await (0, jwt_1.generateToken)(user.id, user.email);
                 if (!user) {
