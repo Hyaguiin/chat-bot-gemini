@@ -9,9 +9,8 @@ export class AuthService {
 
     registerUser = async(body:UserCreationAtributesDTO )=>{
         try{
-            const token = await generateToken(body.email, body.id);
             const register = await this.userService.createUserService(body);
-            return {register, token};
+            return register;
         }catch (err) {
       if (err instanceof Error) {
         throw new Error(`Erro: ${err.message}`);

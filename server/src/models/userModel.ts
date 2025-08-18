@@ -5,8 +5,8 @@ export interface IUserSchema extends Document {
   secondname: string;
   email: string;
   password: string;
-  birthdate: Date;
-  cep: number;
+  birthdate: string;
+  cep: string;
 }
 
 const UserSchema = new Schema<IUserSchema>({
@@ -14,8 +14,8 @@ const UserSchema = new Schema<IUserSchema>({
   secondname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },  
-  birthdate: { type: Date, required: true },
-  cep: { type: Number, required: false },
+  birthdate: { type: String, required: true },
+  cep: { type: String, required: false },
 });
 
 export const UserModel = model<IUserSchema>("User", UserSchema);

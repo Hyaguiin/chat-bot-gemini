@@ -4,9 +4,9 @@ export interface UserAtribbutes {
     name: string;
     secondname: string;
     email: string;
-    birthdate: Date;
+    birthdate: string;
     password: string;
-    cep: number;
+    cep: string;
 };
 
 export interface UserCreationAtributesDTO extends UserAtribbutes{}

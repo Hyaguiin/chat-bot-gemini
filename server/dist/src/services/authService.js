@@ -7,9 +7,8 @@ class AuthService {
     constructor() {
         this.registerUser = async (body) => {
             try {
-                const token = await (0, jwt_1.generateToken)(body.email, body.id);
                 const register = await this.userService.createUserService(body);
-                return { register, token };
+                return register;
             }
             catch (err) {
                 if (err instanceof Error) {

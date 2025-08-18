@@ -7,7 +7,7 @@ const UserSchema = new mongoose_1.Schema({
     secondname: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    birthdate: { type: Date, required: true },
-    cep: { type: Number, required: false },
+    birthdate: { type: String, required: true },
+    cep: { type: String, required: false },
 });
 exports.UserModel = (0, mongoose_1.model)("User", UserSchema);

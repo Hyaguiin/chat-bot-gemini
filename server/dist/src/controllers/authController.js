@@ -7,8 +7,8 @@ class AuthController {
         this.register = async (req, res) => {
             const { name, email, secondname, cep, bithdate, password } = req.body;
             try {
-                const login = await this.authService.registerUser(req.body);
-                res.status(200).json({ message: `Usuario autenticado: `, login });
+                const register = await this.authService.registerUser(req.body);
+                res.status(200).json({ message: `Usuario autenticado: `, register });
             }
             catch (err) {
                 if (err instanceof Error) {
@@ -21,7 +21,7 @@ class AuthController {
             }
         };
         this.login = async (req, res) => {
-            const { email, password, id } = req.body;
+            const { email, password } = req.body;
             try {
                 const login = await this.authService.loginUser(email, password);
                 res.status(200).json({ message: `Usuario autenticado: `, login });
